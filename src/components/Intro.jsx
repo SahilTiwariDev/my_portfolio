@@ -1,56 +1,44 @@
 import React, { useEffect, useState } from "react";
 
-const words = ["websites", "content", "experiences", "apps", "UI/UX"];
-const typingSpeed = 50;
-const deletingSpeed = 50;
-const delayBetweenWords = 1200;
+const texts = ["websites", "content", "experiences"];
 
 const Intro = () => {
-  const [wordIndex, setWordIndex] = useState(0);
+  const [index, setIndex] = useState(0);
   const [displayedText, setDisplayedText] = useState("");
-  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const currentWord = words[wordIndex];
+    const interval = setInterval(() => {
+      setDisplayedText("");
+      setIndex((prevIndex) => (prevIndex + 1) % texts.length);
+    }, 2500);
+    return () => clearInterval(interval);
+  }, []);
 
-    let timeout;
-
-    if (isDeleting) {
-      timeout = setTimeout(() => {
-        setDisplayedText((prev) => prev.slice(0, -1));
-      }, deletingSpeed);
-    } else {
-      timeout = setTimeout(() => {
-        setDisplayedText((prev) => currentWord.slice(0, prev.length + 1));
-      }, typingSpeed);
-    }
-
-    if (!isDeleting && displayedText === currentWord) {
-      timeout = setTimeout(() => setIsDeleting(true), delayBetweenWords);
-    }
-
-    if (isDeleting && displayedText === "") {
-      setIsDeleting(false);
-      setWordIndex((prevIndex) => (prevIndex + 1) % words.length);
-    }
-
-    return () => clearTimeout(timeout);
-  }, [displayedText, isDeleting, wordIndex]);
+  useEffect(() => {
+    let currentIndex = 0;
+    const typingInterval = setInterval(() => {
+      setDisplayedText(texts[index].slice(0, currentIndex + 1));
+      currentIndex++;
+      if (currentIndex === texts[index].length) clearInterval(typingInterval);
+    }, 100);
+    return () => clearInterval(typingInterval);
+  }, [index]);
 
   return (
-    <section>
-      <div className=" flex flex-col justify-center items-center text-white text-center px-4">
-        <p className="text-lg md:text-xl">Hi, my name is</p>
-        <h1 className="text-3xl md:text-5xl font-bold mt-2">Sahil Tiwari</h1>
-        <p className="text-lg md:text-2xl mt-4">
-          I design and develop{" "}
-          <span className="text-purple-500 font-mono">{displayedText}</span>
-          <span className="blinking-cursor text-purple-500">|</span>
-        </p>
-        <p className="text-md md:text-lg mt-2 text-gray-400">
-          Let me show You...
-        </p>
-      </div>
+    <section className="text-white px-8 max-w-2xl">
+      <p className="text-xl font-mono">
+        Start <span className="text-purple-500">/&gt;</span>
+      </p>
+      <p className="text-lg mt-4">Hi, my name is</p>
+      <h1 className="text-4xl md:text-5xl font-bold mt-2">Sahil Tiwari</h1>
+      <p className="text-xl mt-4 flex items-center">
+        I design and develop
+        <span className="text-purple-500 font-mono min-w-[140px] inline-block ml-2">
+          {displayedText}
+          <span className="inline-block w-[3px] h-6 bg-purple-500 animate-pulse ml-1 align-middle" />
+        </span>
+      </p>
+      <p className="text-md mt-2 text-gray-400">Let me show You...</p>
     </section>
   );
 };

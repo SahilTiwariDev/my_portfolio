@@ -1,14 +1,19 @@
 import React from "react";
-import Navbar from "./components/Navbar.jsx";
-import Work from "./pages/Work.jsx";
-import Start from "./pages/Start.jsx";
+import Navbar from "./components/Navbar";
+import Start from "./pages/Start";
+import Work from "./pages/Work";
+import About from "./pages/About";
+import Contact from "./pages/Contact";
 
 const App = () => {
   return (
-    <div>
+    <div className="bg-black text-white">
       <Navbar />
       <Start />
       <Work />
+      <About />
+      <Contact />
+      
     </div>
   );
 };

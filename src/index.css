@@ -1,1 +1,12 @@
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  scroll-behavior: smooth;
+  background-color: black;
+  color: white;
+  font-family: 'Inter', sans-serif;
+}
+
 @import "tailwindcss";
