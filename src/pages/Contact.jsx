@@ -1,5 +1,5 @@
 import React from "react";
-import ScrollIndicator from "../components/ScrollIndicator";
+import ScrollToTop from "../components/ScrollToTop";
 
 const Contact = () => {
   return (
@@ -7,7 +7,9 @@ const Contact = () => {
       <div className="absolute top-6 left-6 text-white text-2xl font-mono">
         Contact <span className="text-purple-500">/&gt;</span>
       </div>
-      <ScrollIndicator />
+      <div>
+        <ScrollToTop />
+      </div>
     </div>
   );
 };
