@@ -65,20 +65,19 @@ const About = () => {
 
         {/* Animated floating image */}
         <motion.img
-  src="/src/assets/developer_image.svg"
-  alt="Developer Illustration"
-  className="w-3/4 md:w-[350px] opacity-90 pointer-events-none"
-  animate={{
-    scale: [1, 1.02, 1],
-    opacity: [0.9, 1, 0.9],
-  }}
-  transition={{
-    duration: 6,
-    repeat: Infinity,
-    ease: "easeInOut",
-  }}
-/>
-
+          src="/src/assets/developer_image.svg"
+          alt="Developer Illustration"
+          className="w-3/4 md:w-[350px] opacity-90 pointer-events-none"
+          animate={{
+            scale: [1, 1.015, 1],
+            opacity: [0.95, 1, 0.95],
+          }}
+          transition={{
+            duration: 4,
+            repeat: Infinity,
+            ease: "easeInOut",
+          }}
+        />
       </div>
 
       {/* Scroll Indicator */}
