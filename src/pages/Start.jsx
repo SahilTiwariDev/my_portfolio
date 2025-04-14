@@ -1,15 +1,18 @@
 import React from "react";
 import Intro from "../components/Intro";
+import ScrollIndicator from "../components/ScrollIndicator";
 
 const Start = () => {
   return (
     <div className="relative h-screen w-full bg-black overflow-hidden">
-      {/* Background Grid */}
-      <div className="absolute inset-0 bg-[linear-gradient(to_right,#4f4f4f2e_1px,transparent_1px),linear-gradient(to_bottom,#8080800a_1px,transparent_1px)] bg-[size:14px_24px] pointer-events-none z-0" />
-      <div className="absolute inset-0 bg-gradient-to-r from-black via-black/80 to-transparent z-0" />
-
-      <div className="relative z-10 flex items-center justify-start h-full">
+      {/* Main content container */}
+      <div className="relative z-10 h-full flex items-center px-6 sm:px-10 md:px-16 lg:pl-60 lg:pr-8">
         <Intro />
+      </div>
+
+      {/* Scroll indicator */}
+      <div>
+        <ScrollIndicator />
       </div>
     </div>
   );
