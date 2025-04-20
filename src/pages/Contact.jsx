@@ -15,6 +15,7 @@ const Contact = () => {
     message: "",
   });
   const [isSending, setIsSending] = useState(false);
+  const [showSuccessMsg, setShowSuccessMsg] = useState(false); // ✅ Added
 
   const handleNext = () => {
     if (step === 1 && formData.user_name.trim() === "") return;
@@ -37,10 +38,11 @@ const Contact = () => {
         "AufdBNITQka3thnfC"
       )
       .then(() => {
-        // Reset form and step after email is sent
         setFormData({ user_name: "", user_email: "", message: "" });
         setStep(1);
         setStart(false);
+        setShowSuccessMsg(true); // ✅ Show message
+        setTimeout(() => setShowSuccessMsg(false), 4000); // ✅ Hide after 4s
       })
       .catch((err) => console.error("Email error:", err))
       .finally(() => setIsSending(false));
@@ -61,7 +63,21 @@ const Contact = () => {
   return (
     <div className="relative min-h-screen bg-neutral-800 text-white font-mono px-4 sm:px-6 flex items-center justify-center">
       <ScrollToTop />
-      <div className="absolute top-6 left-6 text-xl sm:text-2xl">
+
+      {/* ✅ Success Message */}
+      {showSuccessMsg && (
+        <motion.div
+          initial={{ opacity: 0, scale: 0.8 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0, scale: 0.8 }}
+          transition={{ duration: 0.4, type: "spring", bounce: 0.3 }}
+          className="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-full shadow-2xl z-50 text-sm sm:text-base"
+        >
+          Got it! Your message is flying through the digital universe 🚀
+        </motion.div>
+      )}
+
+      <div className="absolute top-6 left-6 text-xl">
         Contact <span className="text-purple-500">/&gt;</span>
       </div>
 
@@ -81,7 +97,7 @@ const Contact = () => {
           </motion.div>
         ) : (
           <>
-            {/* Progress Bar with Wavy Fill */}
+            {/* Progress Bar */}
             <div className="w-full mt-4 mb-6">
               <div className="w-full h-3 bg-gray-700 rounded-full overflow-hidden relative">
                 <motion.div
@@ -93,7 +109,6 @@ const Contact = () => {
               </div>
             </div>
 
-            {/* Step Animation */}
             <AnimatePresence mode="wait">
               {step === 1 && (
                 <motion.div
