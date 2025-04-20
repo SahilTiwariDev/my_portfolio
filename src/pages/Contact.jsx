@@ -71,9 +71,9 @@ const Contact = () => {
           animate={{ opacity: 1, scale: 1 }}
           exit={{ opacity: 0, scale: 0.8 }}
           transition={{ duration: 0.4, type: "spring", bounce: 0.3 }}
-          className="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-full shadow-2xl z-50 text-sm sm:text-base"
+          className="fixed bottom-8 left-1/2 transform -translate-x-1/2 bg-green-500 text-white px-6 py-3 rounded-full shadow-2xl z-50 text-sm sm:text-base md:text-lg sm:px-8 sm:py-4"
         >
-          Got it! Your message is flying through the digital universe 🚀
+          On the way! 🚀
         </motion.div>
       )}
 
