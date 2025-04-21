@@ -32,10 +32,10 @@ const Contact = () => {
     setIsSending(true);
     emailjs
       .send(
-        "service_9uhmkv3",
-        "template_99qx3na",
+        process.env.NEXT_PUBLIC_EMAILJS_SERVICE_ID,
+        process.env.NEXT_PUBLIC_EMAILJS_TEMPLATE_ID,
         formData,
-        "AufdBNITQka3thnfC"
+        process.env.NEXT_PUBLIC_EMAILJS_PUBLIC_KEY
       )
       .then(() => {
         setFormData({ user_name: "", user_email: "", message: "" });
