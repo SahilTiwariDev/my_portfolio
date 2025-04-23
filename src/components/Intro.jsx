@@ -29,7 +29,7 @@ const Intro = () => {
   }, [displayedText, isDeleting, index]);
 
   return (
-    <section className="text-white px-4 sm:px-6 md:px-8 max-w-full sm:max-w-xl md:max-w-2xl">
+    <section className="text-white px-4 sm:px-6 md:px-8 lg:px-12 max-w-full sm:max-w-xl md:max-w-2xl">
       <p className="text-lg sm:text-xl font-mono text-gray-300">
         Start <span className="text-purple-500">/&gt;</span>
       </p>
@@ -37,7 +37,7 @@ const Intro = () => {
       <h1 className="text-4xl sm:text-5xl md:text-6xl font-bold mt-2">Sahil Tiwari</h1>
       <p className="text-2xl sm:text-3xl mt-4 flex flex-wrap items-center">
         I design and develop
-        <span className="text-purple-500 font-mono min-w-[120px] sm:min-w-[140px] inline-block ml-2">
+        <span className="text-purple-500 font-mono min-w-[120px] sm:min-w-[140px] inline-block sm:ml-2">
           {displayedText}
           <span className="inline-block w-[5px] h-6 sm:h-8 bg-purple-500 animate-pulse ml-1 align-middle" />
         </span>
